@@ -1,0 +1,119 @@
+\documentclass[11pt]{amsart}
+% set font
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+
+\usepackage{cite}
+\usepackage{wrapfig, lipsum,booktabs}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{enumitem} % \begin{enumerate}[label=(alph*)/(Alph*)/(roman*)]
+\usepackage{verbatim}
+\usepackage{bm}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{subfigure}
+\usepackage{fancyhdr} 
+\usepackage{float}
+\usepackage{stmaryrd}
+\usepackage{scalerel} %$a_{b_{\scaleto{c}{1pt}}}$
+\usepackage{color}
+\usepackage{soul}
+\usepackage{tikz}
+\usepackage{todonotes}
+\usetikzlibrary{patterns}
+\usepackage{pgfplots}
+\usepackage{cancel}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{calrsfs}
+\usepackage{ragged2e}
+\usepackage{multirow}
+\usepackage{amsmath,amssymb,eucal}
+\usepackage{graphicx,subfigure,epsfig}
+\usepackage{psfrag}
+\usepackage{url}
+\usepackage[letterpaper, margin=1in]{geometry}
+\usepackage{hyperref}
+
+
+% redefine amsmath macro to stretch matrix
+% Ex: \begin{bmatrix}[1.5]...
+\makeatletter
+\renewcommand*\env@matrix[1][\arraystretch]{%
+	\edef\arraystretch{#1}%
+	\hskip -\arraycolsep
+	\let\@ifnextchar\new@ifnextchar
+	\array{*\c@MaxMatrixCols c}}
+\makeatother
+% set tabular column separation, 6pt by default
+\setlength{\tabcolsep}{9pt}
+% boldsymbols
+\newcommand{\bld}[1]{\hbox{\boldmath$#1$}}    
+
+\newcounter{prob}
+\newcounter{module}
+\setcounter{prob}{0}
+% problem template
+\newcommand{\prob}{
+    \stepcounter{prob}
+    \begin{flushleft}
+        $\blacksquare$\;\; \textbf{Problem \themodule.\theprob}
+    \end{flushleft}}
+% sol template
+\newcommand{\sol}[1]{
+    \begin{flushleft}
+        \justifying
+        \textbf{Solution}: #1
+    \end{flushleft}
+    \vspace{5pt}}
+% change title and name here
+\newcommand{\maketitleNew}[1][]{
+        \setcounter{module}{#1}
+        \begin{center}
+            \Large{\textbf{Written Report - 6.419x Module #1}}
+            \vspace{5pt}
+            \end{center}
+        \begin{flushright}
+            \textbf{Name:} \normalsize{beltre\_wilton  % Your name here
+            }
+        \end{flushright}}
+
+
+% =================================
+\begin{document}
+
+\maketitleNew[1] % # module 
+
+\prob
+\textit{(5 points) Please share a few areas in which you would like to address questions using data.}
+\sol{
+ As a software developer, I'm interested in collaborating with data driven/ai startup in the following fields:
+\begin{itemize}
+  \item Telecom: to build a realtime account-based marketing intelligent process. \hyperlink{1}{[1]} 
+  \item Findtech: anti-money laundering detection. \hyperlink{2}{[2]}
+  \item Food: a drone network to generate image/infrared data to avoid excessive use of fertilizer. \hyperlink{3}{[3]}
+\end{itemize}
+}
+\prob
+\textit{(optionally) Please feel free to share your questions of interest.}
+\sol{A year (or more) ago, what motivated you to study data science? Could you remember it?}
+
+
+\vfill
+\centerline{{\bfseries References}}
+
+\hypertarget{1}{[1] \href{https://www.ttec.com/articles/real-time-marketing-analytics-customer-data-optimization-best-practices}{Some uses cases.}}
+
+\hypertarget{2}{[2] \href{https://en.wikipedia.org/wiki/Money_laundering}{Wikipedia: Money laundering.}}
+
+\hypertarget{3}{[3] \href{https://en.wikipedia.org/wiki/Agricultural_drone}{Wikipedia: Agricultural drone.}}
+
+
+\newpage
+% citation
+\bibliography{citation}
+\bibliographystyle{ieeetr}
+
+\end{document}
