@@ -1,7 +1,10 @@
 from scipy.special import comb, factorial
 from scipy.stats import fisher_exact
 from scipy import stats
+from scipy.stats import binom
+from scipy.stats.distributions import chi2
 import numpy as np
+import math
 
 
 def binomial(n, k):
@@ -19,6 +22,11 @@ def poisson(n, k):
 
 def hipergeo_dist(K, k , N, n):
     return (comb(K, k) * comb(N-K, n-k)) / comb(N, n)
+
+
+def fwer(n, a):
+    return 1 - (1-a)**n
+
 
 n, k = 31000, 63
 """diferences between binomial & poisson with large n is not much"""
@@ -44,3 +52,10 @@ print(Ts, diff_mean.mean(), sigma_hat)
 
 Tx, pvalue = stats.ttest_1samp(diff_mean, popmean=0)
 print(pvalue/2)
+
+print('....')
+
+# Module 1,  3. Likelihood Ratio Test on the Mammography Study
+Rtest = -2*math.log(binom.pmf(39,31000,102/62000) * binom.pmf(63,31000,102/62000) / (binom.pmf(39,31000,39/31000) * binom.pmf(63,31000,63/31000)))
+p_value = chi2.sf(Rtest, 1)
+print('p-value %s, Do we reject the null hypothesis with significance level 0.05 %s (%s < 0.05)?' % (p_value, p_value < 0.05, p_value))
